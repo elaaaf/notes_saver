@@ -20,7 +20,7 @@ A simple web application that saves text notes to AWS S3 and converts them to sp
 ### 1. Create S3 Bucket
 
 ```bash
-aws s3 mb s3://voice-notes-cs504 --region eu-north-1
+aws s3 mb s3://voice-notes --region eu-north-1
 ```
 
 ### 2. Configure IAM Permissions
@@ -40,8 +40,8 @@ Create an IAM user or role with these permissions:
                 "s3:ListBucket"
             ],
             "Resource": [
-                "arn:aws:s3:::voice-notes-cs504",
-                "arn:aws:s3:::voice-notes-cs504/*"
+                "arn:aws:s3:::voice-notes",
+                "arn:aws:s3:::voice-notes/*"
             ]
         },
         {
@@ -68,7 +68,7 @@ Create a `.env` file in the project root:
 
 ```
 AWS_REGION=eu-north-1
-S3_BUCKET=voice-notes-cs504
+S3_BUCKET=voice-notes
 COHERE_API_KEY=your_cohere_api_key
 ```
 
@@ -76,7 +76,7 @@ COHERE_API_KEY=your_cohere_api_key
 
 1. Create virtual environment:
 ```bash
-cd project_cs504
+cd project
 python -m venv venv
 source venv/bin/activate
 ```
@@ -111,7 +111,7 @@ AWS Free Tier includes:
 ## Project Structure
 
 ```
-project_cs504/
+project/
 ├── app.py              # Flask backend
 ├── transcribe.py       # AWS S3 & Polly functions
 ├── requirements.txt    # Python dependencies
